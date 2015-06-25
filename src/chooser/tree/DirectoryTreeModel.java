@@ -1,6 +1,6 @@
 package chooser.tree;
 
-import chooser.ChooserConst;
+import chooser.choose.ChooserConst;
 
 import javax.swing.event.TreeModelListener;
 import javax.swing.tree.TreeModel;

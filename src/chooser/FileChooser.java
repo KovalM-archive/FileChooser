@@ -1,8 +1,9 @@
 package chooser;
 
+import chooser.choose.ChooserConst;
+
 import javax.swing.JDialog;
 import javax.swing.JFrame;
-import java.io.File;
 
 public class FileChooser {
     private String homeDirectory;

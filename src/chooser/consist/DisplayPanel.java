@@ -1,6 +1,7 @@
 package chooser.consist;
 
-import chooser.ChooserConst;
+import chooser.choose.ChooseFilePanel;
+import chooser.choose.ChooserConst;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,9 +10,10 @@ import java.io.File;
 public abstract class DisplayPanel extends JPanel {
     protected File[] listOfFiles;
     protected ConsistDirectoryPanel consistDirectoryPanel;
-
-    public DisplayPanel(ConsistDirectoryPanel consistDirectoryPanel,String directoryName){
+    protected ChooseFilePanel chooseFilePanel;
+    public DisplayPanel(ConsistDirectoryPanel consistDirectoryPanel,String directoryName,ChooseFilePanel chooseFilePanel){
         this.consistDirectoryPanel = consistDirectoryPanel;
+        this.chooseFilePanel = chooseFilePanel;
         setLayout(new BorderLayout());
         setProperty();
         setConsist(directoryName);

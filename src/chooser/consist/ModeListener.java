@@ -1,5 +1,7 @@
 package chooser.consist;
 
+import chooser.choose.ChooseFilePanel;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -7,10 +9,11 @@ import java.awt.event.ActionListener;
 public abstract class ModeListener implements ActionListener {
     protected ConsistDirectoryPanel consistDirectoryPanel;
     protected JToolBar changeConsist;
-
-    protected ModeListener(ConsistDirectoryPanel consistDirectoryPanel, JToolBar changeConsist){
+    protected ChooseFilePanel chooseFilePanel;
+    protected ModeListener(ConsistDirectoryPanel consistDirectoryPanel, JToolBar changeConsist,ChooseFilePanel chooseFilePanel){
         this.changeConsist = changeConsist;
         this.consistDirectoryPanel = consistDirectoryPanel;
+        this.chooseFilePanel = chooseFilePanel;
     }
 
     protected void changeMode(){}

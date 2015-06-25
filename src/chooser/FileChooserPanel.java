@@ -1,5 +1,6 @@
 package chooser;
 
+import chooser.choose.ChooseFilePanel;
 import chooser.consist.ConsistDirectoryPanel;
 import chooser.tree.TreeDirectoryPanel;
 
@@ -16,7 +17,8 @@ public class FileChooserPanel extends JPanel {
         this.homeDirectory = homeDirectory;
         setLayout(null);
         chooseFilePanel = new ChooseFilePanel();
-        consistDirectoryPanel = new ConsistDirectoryPanel(homeDirectory);
+        consistDirectoryPanel = new ConsistDirectoryPanel(homeDirectory,chooseFilePanel);
+        chooseFilePanel.setConsistDirectoryPanel(consistDirectoryPanel);
         treeDirectoryPanel = new TreeDirectoryPanel(consistDirectoryPanel);
         treeDirectoryPanel.setBounds(0,0,200,400);
         consistDirectoryPanel.setBounds(200,0,500,400);

@@ -1,5 +1,6 @@
 package chooser.consist;
 
+import chooser.choose.ChooseFilePanel;
 import chooser.tree.DirectoryTreeView;
 
 import javax.swing.BorderFactory;
@@ -13,8 +14,9 @@ public class ConsistDirectoryPanel extends JPanel {
     private String homeDirectory;
     private String currentDirectory;
     private DisplayPanel displayPanel = null;
+    private ChooseFilePanel chooseFilePanel;
 
-    public ConsistDirectoryPanel(String homeDirectory){
+    public ConsistDirectoryPanel(String homeDirectory,ChooseFilePanel chooseFilePanel){
         setBorder(BorderFactory.createLineBorder(Color.lightGray, 1));
         setLayout(new BorderLayout());
         JToolBar changeConsist = new JToolBar("", JToolBar.HORIZONTAL);
@@ -23,11 +25,11 @@ public class ConsistDirectoryPanel extends JPanel {
         JToggleButton atHome = new JToggleButton("home",false);
 
         JToggleButton toTable = new JToggleButton("table",false);
-        toTable.addActionListener(new TableDisplayListener(this,changeConsist));
+        toTable.addActionListener(new TableDisplayListener(this,changeConsist,chooseFilePanel));
         JToggleButton toList = new JToggleButton("list",true);
-        toList.addActionListener(new ListDisplayListener(this,changeConsist));
+        toList.addActionListener(new ListDisplayListener(this,changeConsist,chooseFilePanel));
         JToggleButton toDirectory = new JToggleButton("directory",false);
-        toDirectory.addActionListener(new DirectoryDisplayListener(this,changeConsist));
+        toDirectory.addActionListener(new DirectoryDisplayListener(this,changeConsist,chooseFilePanel));
 
         changeConsist.add(atHome);
         changeConsist.add(toTable);
@@ -37,7 +39,8 @@ public class ConsistDirectoryPanel extends JPanel {
 
         this.homeDirectory = homeDirectory;
         currentDirectory = homeDirectory;
-        displayPanel = new ListDisplayPanel(this,currentDirectory);
+        this.chooseFilePanel = chooseFilePanel;
+        displayPanel = new ListDisplayPanel(this,currentDirectory,chooseFilePanel);
         add(displayPanel, BorderLayout.CENTER);
     }
 
@@ -50,7 +53,7 @@ public class ConsistDirectoryPanel extends JPanel {
         changeConsist();
     }
 
-    private void changeConsist(){
+    public void changeConsist(){
         displayPanel.setConsist(currentDirectory);
     }
 
@@ -60,5 +63,9 @@ public class ConsistDirectoryPanel extends JPanel {
 
     public void setDisplayPanel(DisplayPanel displayPanel) {
         this.displayPanel = displayPanel;
+    }
+
+    public ChooseFilePanel getChooseFilePanel() {
+        return chooseFilePanel;
     }
 }

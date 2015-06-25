@@ -1,6 +1,6 @@
 package chooser.tree;
 
-import chooser.ChooserConst;
+import chooser.choose.ChooserConst;
 
 import java.io.File;
 import java.util.ArrayList;

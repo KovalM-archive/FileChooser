@@ -1,15 +1,19 @@
 package chooser.consist;
 
+import chooser.choose.ChooseFilePanel;
+
+
 import javax.swing.*;
 import javax.swing.table.TableModel;
 import java.awt.event.ActionEvent;
 
 public class TableDisplayListener extends ModeListener {
-    public TableDisplayListener(ConsistDirectoryPanel consistDirectoryPanel,JToolBar changeConsist){
-        super(consistDirectoryPanel,changeConsist);
+    public TableDisplayListener(ConsistDirectoryPanel consistDirectoryPanel,JToolBar changeConsist,ChooseFilePanel chooseFilePanel){
+        super(consistDirectoryPanel,changeConsist,chooseFilePanel);
     }
 
     protected void changeMode(){
-        consistDirectoryPanel.setDisplayPanel(new TableDisplayPanel(consistDirectoryPanel, consistDirectoryPanel.getCurrentDirectory()));
+        consistDirectoryPanel.setDisplayPanel(new TableDisplayPanel(consistDirectoryPanel,
+                consistDirectoryPanel.getCurrentDirectory(),chooseFilePanel));
     }
 }
