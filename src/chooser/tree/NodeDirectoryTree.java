@@ -1,5 +1,7 @@
 package chooser.tree;
 
+import chooser.ChooserConst;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -11,6 +13,10 @@ public class NodeDirectoryTree {
 
     public NodeDirectoryTree(String fullPath){
         this.fullPath = fullPath;
+    }
+
+    public String getFullPath(){
+        return fullPath;
     }
 
     public String toString(){
@@ -57,7 +63,7 @@ public class NodeDirectoryTree {
         sonsIsCreate = true;
         sonsList = new ArrayList<NodeDirectoryTree>();
         File[] listOfFiles;
-        if (fullPath.equals("/home")){
+        if (fullPath.equals(ChooserConst.NAME_TREE_ROOT)){
             listOfFiles = File.listRoots();
         } else{
             File folder = new File(fullPath);
@@ -67,7 +73,7 @@ public class NodeDirectoryTree {
         int n = listOfFiles.length;
         for (int i = 0; i < n; i++) {
             if (listOfFiles[i].isDirectory()){
-                if (fullPath.equals("/home")){
+                if (fullPath.equals(ChooserConst.NAME_TREE_ROOT)){
                     String name = new String();
                     String path = listOfFiles[i].getAbsolutePath();
                     int m = path.length();

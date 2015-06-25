@@ -2,14 +2,23 @@ package chooser;
 
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import java.io.File;
 
 public class FileChooser {
+    private String homeDirectory;
+
+    public FileChooser(){
+        homeDirectory = ChooserConst.NAME_TREE_ROOT;
+    }
+    public FileChooser(String homeDirectory){
+        this.homeDirectory = homeDirectory;
+    }
 
     public void showInputDialog(JFrame mainWindow){
         JDialog inputDialog = new JDialog(mainWindow,"Addition of student",false);
-        inputDialog.setSize(700, 500);
+        inputDialog.setSize(750, 500);
         inputDialog.setLocationRelativeTo(null);
         inputDialog.setVisible(true);
-        inputDialog.add(new FileChooserPanel());
+        inputDialog.add(new FileChooserPanel(homeDirectory));
     }
 }

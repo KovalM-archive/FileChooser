@@ -1,5 +1,7 @@
 package chooser.tree;
 
+import chooser.ChooserConst;
+
 import javax.swing.event.TreeModelListener;
 import javax.swing.tree.TreeModel;
 import javax.swing.tree.TreePath;
@@ -8,7 +10,7 @@ public class DirectoryTreeModel implements TreeModel{
     private NodeDirectoryTree rootTree;
 
     public DirectoryTreeModel(){
-        rootTree = new NodeDirectoryTree("/home");
+        rootTree = new NodeDirectoryTree(ChooserConst.NAME_TREE_ROOT);
     }
 
     @Override
@@ -47,7 +49,6 @@ public class DirectoryTreeModel implements TreeModel{
 
     @Override
     public void addTreeModelListener(TreeModelListener l) {
-
     }
 
     @Override

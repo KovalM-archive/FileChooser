@@ -1,28 +1,36 @@
 package chooser;
 
+import chooser.consist.ConsistDirectoryPanel;
 import chooser.tree.TreeDirectoryPanel;
 
-import javax.swing.BorderFactory;
-import javax.swing.JPanel;
+import javax.swing.*;
 import java.awt.BorderLayout;
-import java.awt.Color;
 
 public class FileChooserPanel extends JPanel {
     private ChooseFilePanel chooseFilePanel;
     private TreeDirectoryPanel treeDirectoryPanel;
     private ConsistDirectoryPanel consistDirectoryPanel;
+    private String homeDirectory;
 
-    public FileChooserPanel(){
+    public FileChooserPanel(String homeDirectory){
+        this.homeDirectory = homeDirectory;
         setLayout(null);
         chooseFilePanel = new ChooseFilePanel();
-        treeDirectoryPanel = new TreeDirectoryPanel();
-        consistDirectoryPanel = new ConsistDirectoryPanel();
+        consistDirectoryPanel = new ConsistDirectoryPanel(homeDirectory);
+        treeDirectoryPanel = new TreeDirectoryPanel(consistDirectoryPanel);
         treeDirectoryPanel.setBounds(0,0,200,400);
         consistDirectoryPanel.setBounds(200,0,500,400);
         chooseFilePanel.setBounds(0,400,700,100);
         add(chooseFilePanel,BorderLayout.SOUTH);
         add(treeDirectoryPanel,BorderLayout.WEST);
         add(consistDirectoryPanel,BorderLayout.CENTER);
+
+        /*JPanel test = new JPanel();
+        test.setLayout(new BorderLayout());
+        test.setBounds(200,0,500,400);
+        String[] data = {"1","2","3"};
+        test.add(new JList<String>(data),BorderLayout.CENTER);
+        add(test,BorderLayout.CENTER);*/
     }
 
     public ChooseFilePanel getChooseFilePanel() {
