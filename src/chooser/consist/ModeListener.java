@@ -23,15 +23,13 @@ public abstract class ModeListener implements ActionListener {
         JToggleButton currentButton;
         int count = changeConsist.getComponentCount();
         for (int i=0; i<count; i++){
-            try {
+            if (changeConsist.getComponentAtIndex(i) instanceof JToggleButton){
                 currentButton = (JToggleButton) changeConsist.getComponentAtIndex(i);
                 if (e.getActionCommand().equals(currentButton.getActionCommand())){
                     currentButton.setSelected(true);
                 }else{
                     currentButton.setSelected(false);
                 }
-            } catch (Exception err){
-                err.printStackTrace();
             }
         }
         changeMode();

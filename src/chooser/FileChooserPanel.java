@@ -13,10 +13,10 @@ public class FileChooserPanel extends JPanel {
     private ConsistDirectoryPanel consistDirectoryPanel;
     private String homeDirectory;
 
-    public FileChooserPanel(String homeDirectory){
+    public FileChooserPanel(String homeDirectory,FileChooser fileChooser){
         this.homeDirectory = homeDirectory;
         setLayout(null);
-        chooseFilePanel = new ChooseFilePanel();
+        chooseFilePanel = new ChooseFilePanel(fileChooser);
         consistDirectoryPanel = new ConsistDirectoryPanel(homeDirectory,chooseFilePanel);
         chooseFilePanel.setConsistDirectoryPanel(consistDirectoryPanel);
         treeDirectoryPanel = new TreeDirectoryPanel(consistDirectoryPanel);

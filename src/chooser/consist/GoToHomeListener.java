@@ -6,14 +6,16 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GoToHomeListener implements ActionListener {
-    private DirectoryTreeView directoryTreeView;
-    public GoToHomeListener(DirectoryTreeView directoryTreeView){
-        this.directoryTreeView = directoryTreeView;
+    private ConsistDirectoryPanel consistDirectoryPanel;
+    private String homeDirectory;
+
+    public GoToHomeListener(ConsistDirectoryPanel consistDirectoryPanel,String homeDirectory){
+        this.consistDirectoryPanel = consistDirectoryPanel;
+        this.homeDirectory = homeDirectory;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println(System.getProperty("user.dir"));
-
+        consistDirectoryPanel.setCurrentDirectory(homeDirectory);
     }
 }

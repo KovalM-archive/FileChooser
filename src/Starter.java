@@ -1,13 +1,18 @@
 import chooser.FileChooser;
 
-import javax.swing.SwingUtilities;
+import javax.swing.*;
+import java.awt.*;
 
 public class Starter {
     public static void main(String[] args) {
         SwingUtilities.invokeLater(new Runnable(){
             @Override
             public void run() {
-                new FileChooser().showInputDialog(null);
+                FileChooser test = new FileChooser();
+                test.showOpenDialog(null);
+                if (test.isSelectedFlag()){
+                    System.out.println(test.getSelectedFile().getAbsolutePath());
+                }
             }
         });
     }

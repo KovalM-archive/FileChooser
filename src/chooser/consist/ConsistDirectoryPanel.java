@@ -3,10 +3,7 @@ package chooser.consist;
 import chooser.choose.ChooseFilePanel;
 import chooser.tree.DirectoryTreeView;
 
-import javax.swing.BorderFactory;
-import javax.swing.JPanel;
-import javax.swing.JToggleButton;
-import javax.swing.JToolBar;
+import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 
@@ -22,8 +19,10 @@ public class ConsistDirectoryPanel extends JPanel {
         JToolBar changeConsist = new JToolBar("", JToolBar.HORIZONTAL);
         changeConsist.setFloatable(false);
 
-        JToggleButton atHome = new JToggleButton("home",false);
-
+        JButton atHome = new JButton("home");
+        atHome.addActionListener(new GoToHomeListener(this,homeDirectory));
+        JButton toPrevious = new JButton("previous");
+        toPrevious.addActionListener(new GoToPreviousListener(this));
         JToggleButton toTable = new JToggleButton("table",false);
         toTable.addActionListener(new TableDisplayListener(this,changeConsist,chooseFilePanel));
         JToggleButton toList = new JToggleButton("list",true);
@@ -32,6 +31,7 @@ public class ConsistDirectoryPanel extends JPanel {
         toDirectory.addActionListener(new DirectoryDisplayListener(this,changeConsist,chooseFilePanel));
 
         changeConsist.add(atHome);
+        changeConsist.add(toPrevious);
         changeConsist.add(toTable);
         changeConsist.add(toList);
         changeConsist.add(toDirectory);

@@ -53,7 +53,8 @@ public class ListDisplayPanel extends DisplayPanel {
         listVisibly.setLayoutOrientation(JList.VERTICAL_WRAP);
         listVisibly.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         listVisibly.setCellRenderer(new MyCellRenderer());
-        listVisibly.addListSelectionListener(new ListSelectedListener(listVisibly,consistDirectoryPanel));
+        listVisibly.addMouseListener(new ListSelectedListener(listVisibly,consistDirectoryPanel));
+        //listVisibly.addListSelectionListener(new ListSelectedListener(listVisibly,consistDirectoryPanel));
         JScrollPane scroll = new JScrollPane(listVisibly);
         scroll.setPreferredSize(new Dimension(getWidth(),getHeight()));
         add(scroll, BorderLayout.CENTER);

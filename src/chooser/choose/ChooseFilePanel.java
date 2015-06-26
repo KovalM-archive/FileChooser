@@ -1,5 +1,6 @@
 package chooser.choose;
 
+import chooser.FileChooser;
 import chooser.consist.ConsistDirectoryPanel;
 
 import javax.swing.BorderFactory;
@@ -16,8 +17,10 @@ public class ChooseFilePanel extends JPanel{
     private JTextField enterFileName;
     private ConsistDirectoryPanel consistDirectoryPanel;
     private JComboBox<String> filtreFile;
+    private FileChooser fileChooser;
 
-    public ChooseFilePanel(){
+    public ChooseFilePanel(FileChooser fileChooser){
+        this.fileChooser = fileChooser;
         setBorder(BorderFactory.createLineBorder(Color.lightGray, 1));
         JLabel fileName = new JLabel("Name:");
         enterFileName = new JTextField("",30);
@@ -30,7 +33,9 @@ public class ChooseFilePanel extends JPanel{
             }
         });
         JButton enterButton = new JButton("OK");
+        enterButton.addActionListener(new EnterListener(fileChooser,this));
         JButton cancelButton = new JButton("CANCEL");
+        cancelButton.addActionListener(new CancelListener(fileChooser));
         add(fileName);
         add(enterFileName);
         add(filtreFile);
@@ -38,6 +43,9 @@ public class ChooseFilePanel extends JPanel{
         add(cancelButton);
     }
 
+    public String getSelectedFile(){
+        return enterFileName.getText();
+    }
     public void changeSelectedFile(String name){
         enterFileName.setText(name);
     }
