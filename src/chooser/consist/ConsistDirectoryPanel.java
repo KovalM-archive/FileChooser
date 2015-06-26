@@ -23,9 +23,9 @@ public class ConsistDirectoryPanel extends JPanel {
         atHome.addActionListener(new GoToHomeListener(this,homeDirectory));
         JButton toPrevious = new JButton("previous");
         toPrevious.addActionListener(new GoToPreviousListener(this));
-        JToggleButton toTable = new JToggleButton("table",false);
+        JToggleButton toTable = new JToggleButton("table",true);
         toTable.addActionListener(new TableDisplayListener(this,changeConsist,chooseFilePanel));
-        JToggleButton toList = new JToggleButton("list",true);
+        JToggleButton toList = new JToggleButton("list",false);
         toList.addActionListener(new ListDisplayListener(this,changeConsist,chooseFilePanel));
         JToggleButton toDirectory = new JToggleButton("directory",false);
         toDirectory.addActionListener(new DirectoryDisplayListener(this,changeConsist,chooseFilePanel));
@@ -40,7 +40,7 @@ public class ConsistDirectoryPanel extends JPanel {
         this.homeDirectory = homeDirectory;
         currentDirectory = homeDirectory;
         this.chooseFilePanel = chooseFilePanel;
-        displayPanel = new ListDisplayPanel(this,currentDirectory,chooseFilePanel);
+        displayPanel = new TableDisplayPanel(this,currentDirectory,chooseFilePanel);
         add(displayPanel, BorderLayout.CENTER);
     }
 
@@ -61,8 +61,11 @@ public class ConsistDirectoryPanel extends JPanel {
         return displayPanel;
     }
 
-    public void setDisplayPanel(DisplayPanel displayPanel) {
-        this.displayPanel = displayPanel;
+    public void setDisplayPanel(DisplayPanel displayPanel1) {
+        remove(displayPanel);
+        this.displayPanel = displayPanel1;
+        add(this.displayPanel,BorderLayout.CENTER);
+        this.displayPanel.updateUI();
     }
 
     public ChooseFilePanel getChooseFilePanel() {

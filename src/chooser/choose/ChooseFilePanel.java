@@ -74,4 +74,19 @@ public class ChooseFilePanel extends JPanel{
 
         return false;
     }
+
+    public String getFormat(){
+        int count = ChooserConst.FILTRE.length;
+        String selected = (String)filtreFile.getSelectedItem();
+        if (selected.equals("ALL")){
+            return "";
+        }
+        for (int i = 0; i < count; i++) {
+            if (selected.equals(ChooserConst.FILTRE[i])){
+                return ChooserConst.EXTENSION[i];
+            }
+        }
+
+        return "";
+    }
 }

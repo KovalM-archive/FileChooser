@@ -11,6 +11,7 @@ public abstract class DisplayPanel extends JPanel {
     protected File[] listOfFiles;
     protected ConsistDirectoryPanel consistDirectoryPanel;
     protected ChooseFilePanel chooseFilePanel;
+
     public DisplayPanel(ConsistDirectoryPanel consistDirectoryPanel,String directoryName,ChooseFilePanel chooseFilePanel){
         this.consistDirectoryPanel = consistDirectoryPanel;
         this.chooseFilePanel = chooseFilePanel;
@@ -34,6 +35,26 @@ public abstract class DisplayPanel extends JPanel {
             File folder = new File(directoryName);
             listOfFiles = folder.listFiles();
         }
+        listOfFiles = sortFile(listOfFiles);
         changedConsist();
+    }
+
+    protected File[] sortFile(File[] oldList){
+        File[] newList = new File[oldList.length];
+        int qe=0;
+        for (int i = 0; i < oldList.length; i++) {
+            if (oldList[i].isDirectory()){
+                newList[qe] = oldList[i];
+                qe++;
+            }
+        }
+
+        for (int i = 0; i < oldList.length; i++) {
+            if (oldList[i].isFile()){
+                newList[qe] = oldList[i];
+                qe++;
+            }
+        }
+        return newList;
     }
 }

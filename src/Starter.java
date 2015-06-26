@@ -1,7 +1,7 @@
 import chooser.FileChooser;
 
 import javax.swing.*;
-import java.awt.*;
+
 
 public class Starter {
     public static void main(String[] args) {
@@ -9,7 +9,7 @@ public class Starter {
             @Override
             public void run() {
                 FileChooser test = new FileChooser();
-                test.showOpenDialog(null);
+                test.showSaveDialog(null);
                 if (test.isSelectedFlag()){
                     System.out.println(test.getSelectedFile().getAbsolutePath());
                 }

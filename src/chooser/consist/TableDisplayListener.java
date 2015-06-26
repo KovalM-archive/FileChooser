@@ -5,6 +5,7 @@ import chooser.choose.ChooseFilePanel;
 
 import javax.swing.*;
 import javax.swing.table.TableModel;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 
 public class TableDisplayListener extends ModeListener {
@@ -13,7 +14,8 @@ public class TableDisplayListener extends ModeListener {
     }
 
     protected void changeMode(){
-        consistDirectoryPanel.setDisplayPanel(new TableDisplayPanel(consistDirectoryPanel,
-                consistDirectoryPanel.getCurrentDirectory(),chooseFilePanel));
+        TableDisplayPanel newTable = new TableDisplayPanel(consistDirectoryPanel,
+                consistDirectoryPanel.getCurrentDirectory(),chooseFilePanel);
+        consistDirectoryPanel.setDisplayPanel(newTable);
     }
 }

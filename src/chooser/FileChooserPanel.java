@@ -26,13 +26,6 @@ public class FileChooserPanel extends JPanel {
         add(chooseFilePanel,BorderLayout.SOUTH);
         add(treeDirectoryPanel,BorderLayout.WEST);
         add(consistDirectoryPanel,BorderLayout.CENTER);
-
-        /*JPanel test = new JPanel();
-        test.setLayout(new BorderLayout());
-        test.setBounds(200,0,500,400);
-        String[] data = {"1","2","3"};
-        test.add(new JList<String>(data),BorderLayout.CENTER);
-        add(test,BorderLayout.CENTER);*/
     }
 
     public ChooseFilePanel getChooseFilePanel() {

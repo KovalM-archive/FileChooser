@@ -21,28 +21,13 @@ public class ListDisplayPanel extends DisplayPanel {
         listModel.clear();
         int count = listOfFiles.length;
         for (int i = 0; i < count; i++) {
-            if (listOfFiles[i].isDirectory()){
-                String name;
-                if (listOfFiles[i].getName().equals("")){
-                    name = listOfFiles[i].getAbsolutePath();
-                } else{
-                    name = listOfFiles[i].getAbsolutePath();
-                }
-                listModel.addElement(name);
+            String name;
+            if (listOfFiles[i].getName().equals("")){
+                name = listOfFiles[i].getAbsolutePath();
+            } else{
+                name = listOfFiles[i].getAbsolutePath();
             }
-        }
-        for (int i = 0; i < count; i++) {
-            if (listOfFiles[i].isFile()){
-                String name;
-                if (listOfFiles[i].getName().equals("")){
-                    name = listOfFiles[i].getAbsolutePath();
-                } else{
-                    name = listOfFiles[i].getAbsolutePath();
-                }
-                if (chooseFilePanel.checkFile(name)){
-                    listModel.addElement(name);
-                }
-            }
+            listModel.addElement(name);
         }
     }
 
