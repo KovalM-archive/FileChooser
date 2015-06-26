@@ -13,12 +13,12 @@ public class TableDisplayPanel extends DisplayPanel {
     }
 
     public void changedConsist(){
-
         tableFile.setModel(new TableDisplayModel(listOfFiles));
     }
 
     public void setProperty(){
         tableFile = new JTable();
+        tableFile.addMouseListener(new TableSelectedListener(tableFile,consistDirectoryPanel));
         JScrollPane scroll = new JScrollPane(tableFile);
         scroll.setPreferredSize(new Dimension(getWidth(),getHeight()));
         add(scroll, BorderLayout.CENTER);

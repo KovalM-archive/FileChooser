@@ -3,7 +3,6 @@ package chooser;
 import chooser.choose.ChooserConst;
 
 import javax.swing.*;
-import java.awt.*;
 import java.io.File;
 
 public class FileChooser {
@@ -34,7 +33,6 @@ public class FileChooser {
         setSelectedFile(null);
         setSelectedFlag(false);
         inputDialog = new JDialog(mainWindow,"Addition of student",true);
-        //inputDialog.setContentPane(new JOptionPane());
         inputDialog.setSize(750, 500);
         inputDialog.setLocationRelativeTo(null);
         inputDialog.add(new FileChooserPanel(homeDirectory, this));

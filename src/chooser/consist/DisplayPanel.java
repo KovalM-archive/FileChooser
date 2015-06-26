@@ -40,20 +40,24 @@ public abstract class DisplayPanel extends JPanel {
     }
 
     protected File[] sortFile(File[] oldList){
-        File[] newList = new File[oldList.length];
+        File[] bufferList = new File[oldList.length];
         int qe=0;
         for (int i = 0; i < oldList.length; i++) {
             if (oldList[i].isDirectory()){
-                newList[qe] = oldList[i];
+                bufferList[qe] = oldList[i];
                 qe++;
             }
         }
 
         for (int i = 0; i < oldList.length; i++) {
-            if (oldList[i].isFile()){
-                newList[qe] = oldList[i];
+            if (oldList[i].isFile() && chooseFilePanel.checkFile(oldList[i].getAbsolutePath())){
+                bufferList[qe] = oldList[i];
                 qe++;
             }
+        }
+        File[] newList = new File[qe];
+        for (int i = 0; i < qe; i++) {
+            newList[i] = bufferList[i];
         }
         return newList;
     }

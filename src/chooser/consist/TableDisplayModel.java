@@ -1,7 +1,12 @@
 package chooser.consist;
 
+import chooser.FileChooser;
+
 import javax.swing.table.AbstractTableModel;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public class TableDisplayModel extends AbstractTableModel {
     private File[] listFile;
@@ -50,7 +55,7 @@ public class TableDisplayModel extends AbstractTableModel {
             }
         } else if (columnIndex == 1) {
             if (listFile[rowIndex].isDirectory()) {
-                return "папка";
+                return "";
             } else {
                 String name = listFile[rowIndex].getName();
                 int left = -1, count = name.length();
@@ -72,9 +77,19 @@ public class TableDisplayModel extends AbstractTableModel {
                 return newName;
             }
         } else if (columnIndex == 2) {
-            return null;
+            if (listFile[rowIndex].isDirectory()){
+                return "<папка>";
+            } else {
+                String  name = Integer.toString((int) listFile[rowIndex].length());
+                return name+" байт";
+            }
         } else {
-            return null;
+            long time = listFile[rowIndex].lastModified();
+            SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
+            //final Calendar c = Calendar.getInstance();
+            //c.setTimeInMillis(time);
+            //c.setTimeZone(TimeZone.getDefault());
+            return format.format(time);
         }
     }
     @Override
@@ -86,5 +101,9 @@ public class TableDisplayModel extends AbstractTableModel {
                 "дата изменения",
         };
         return columnName[column];
+    }
+
+    public File getFileAt(int x){
+        return listFile[x];
     }
 }
